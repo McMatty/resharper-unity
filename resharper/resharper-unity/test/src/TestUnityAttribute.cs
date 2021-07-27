@@ -38,6 +38,7 @@ namespace JetBrains.ReSharper.Plugins.Unity.Tests
         Unity2019_4,
         Unity2020_1,
         Unity2020_2,
+        UnityExploit,
 
         // General rule: Keep the default version at the latest LTS Unity version
         // If you need a newer/specific version for a specific test, use [TestUnity(UnityVersion.Unity2020_1)], etc.
@@ -112,6 +113,7 @@ namespace JetBrains.ReSharper.Plugins.Unity.Tests
             {
                 switch (myVersion)
                 {
+                    case UnityVersion.UnityExploit: return "UNITY_EXPLOIT";
                     case UnityVersion.Unity54: return "UNITY_5_4";
                     case UnityVersion.Unity55: return "UNITY_5_5";
                     case UnityVersion.Unity56: return "UNITY_5_6";
@@ -141,6 +143,7 @@ namespace JetBrains.ReSharper.Plugins.Unity.Tests
             {
                 // Note that the .0 here doesn't mean e.g. Unity 2018.1.0f1, it's just the package number. The actual
                 // revision used is irrelevant, as we're interested in resolving the API, not in minor fixes
+                case UnityVersion.UnityExploit: return "1.0.0";
                 case UnityVersion.Unity54: return "5.4.0";
                 case UnityVersion.Unity55: return "5.5.0";
                 case UnityVersion.Unity56: return "5.6.0";
