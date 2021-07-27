@@ -1,6 +1,7 @@
-name: CI
+name: Workflow_test
 
-on: [pull_request]
+on:
+   workflow_dispatch: 
 
 jobs:
   # Make sure we only invoke known gradle-wrapper.jar files
@@ -28,31 +29,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v1
         with:
-          name: nunit-reports
-          path: rider\build\nunit\reports
-  linux:
-    needs: gradleValidation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Fetch Sources
-        uses: actions/checkout@v2
-      - name: Setup .NET CLI
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
-      - name: Build
-        shell: bash
-        run: ./build.sh --info --stacktrace
-  macos:
-    needs: gradleValidation
-    runs-on: macos-latest
-    steps:
-      - name: Fetch Sources
-        uses: actions/checkout@v2
-      - name: Setup .NET CLI
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
-      - name: Build
-        shell: bash
-        run: ./build.sh --info --stacktrace
+          name: logs
+          path: resharper\build\resharper-unity\logs
